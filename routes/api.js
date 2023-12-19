@@ -1,15 +1,9 @@
-// The Routes file with including Posting Users to the database.
-/////////////////////////////////////////////////////////////////////
-// Importing all required dependencies.
 const express = require('express');
 const { body, validationResult } = require('express-validator');
 const User = require('../models/User');
-////////////////////////////////////////////////////////////////////
 
 const router = express.Router();
 
-//////////////////////////////////////////////////////////////////
-// Posting the User or Users
 router.post(
   '/save-user',
   [
@@ -17,9 +11,6 @@ router.post(
     body('sector').trim().notEmpty().escape(),
     body('agreeToTerms').isBoolean(),
   ],
-
-///////////////////////////////////////////////////////////////////
-// A async Function to check and validate the user.
   async (req, res) => {
     try {
       const errors = validationResult(req);
@@ -36,5 +27,5 @@ router.post(
     }
   }
 );
-///////////////////////////////////////////////////////////////////
+
 module.exports = router;
