@@ -34,6 +34,7 @@ router.post(
       // Create a new user
       const newUser = new User(req.body);
       const savedUser = await newUser.save();
+      console.log('Request Body:', req.body);
       res.json({ success: true, user: savedUser });
     } catch (error) {
       console.error('Error saving or updating user:', error);
